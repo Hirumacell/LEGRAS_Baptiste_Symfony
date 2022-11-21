@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}supprimer une catégorie{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Supprimer une catégorie <i>{{ chatons.nom }}</i></h1>
+        {{ form(formulaire) }}
+        {# je vais mettre le bouton retour #}
+        <a href="{{ path("app_categories") }}" class="btn btn-primary">Retour</a>
+    </div>
+{% endblock %}
