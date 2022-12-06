@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProprietaireController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Gestion des propriétaires</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th></th>
+        </tr>
+        {% for p in proprietaires %}
+        <tr>
+            <td>{{ p.nom }}</td>
+            <td>{{ p.prenom }}</td>
+            <td>
+                <a class="btn btn-primary" href="{{ path("app_proprietaire", {"id":p.id}) }}">Voir les Chatons</a>
+                <a class="btn btn-danger" href="{{ path("app_proprietaire_supprimer", {"id":p.id}) }}">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
