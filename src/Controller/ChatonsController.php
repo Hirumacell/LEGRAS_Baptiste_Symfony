@@ -7,6 +7,7 @@ use App\Entity\Chaton;
 use App\Entity\Proprietaire;
 use App\Form\CategorieSupprimerType;
 use App\Form\CategorieType;
+use App\Form\ChatonSupprimerType;
 use App\Form\ChatonType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -82,7 +83,7 @@ class ChatonsController extends AbstractController
         }
 
         //si l'id existe :
-        $form=$this->createForm(CategorieSupprimerType::class, $chaton);
+        $form=$this->createForm(ChatonSupprimerType::class, $chaton);
 
         //On gère le retour du formulaire
         $form->handleRequest($request);
@@ -93,13 +94,13 @@ class ChatonsController extends AbstractController
             //et on dit à l'entity manager de mettre la catégorie en question dans la table de supprimer
             $em->remove(($chaton));
 
-            //on génère l'appel SQL (ici un update)
+            //on génère l'appel SQL (ici un delete)
             $em->flush();
 
             return $this->redirectToRoute("app_categories");
         }
 
-        return $this->render("chaton/supprimer.html.twig",[
+        return $this->render("chatons/supprimer.html.twig",[
             "chaton"=>$chaton,
             "formulaire"=>$form->createView()
         ]);

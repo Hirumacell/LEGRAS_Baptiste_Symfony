@@ -30,7 +30,7 @@ class ProprietaireController extends AbstractController
     }
 
     /**
-     * @Route("/proprietaire/{id}", name="app_proprietaire")
+     * @Route("/proprietaire/chaton{id}", name="app_proprietaire")
      */
     public function proprietairebyid($id, ManagerRegistry $doctrine): Response
     {

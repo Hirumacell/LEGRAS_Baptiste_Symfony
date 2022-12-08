@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Voir{% endblock %}
+{% block title %}Voir les chatons{% endblock %}
 
 {% block body %}
 
     <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
     <div class="container">
@@ -18,11 +17,12 @@
         <div class="row">
             {% for c in chaton %}
                 <div class="col col-3">
-                    <div class="card"><img src="{{ c.photo }}" alt=""
-                                           class="card-img-top">
+                    <div class="card">
+                        <img src="{{ c.photo }}" alt="" class="card-img-top">
                         <div class="card-body">
                             <h2 class="card-title">{{ c.nom }}</h2>
-                            <a href="/" class="mt-5 btn btn-danger">Supprimer</a>
+                            <a href="{{ path('app_chaton_supprimer', {"id":c.id}) }}" class="mt-5 btn btn-warning">Modifier</a>
+                            <a href="{{ path('app_chaton_supprimer', {"id":c.id}) }}" class="mt-5 btn btn-danger">Supprimer</a>
                         </div>
                     </div>
                 </div>

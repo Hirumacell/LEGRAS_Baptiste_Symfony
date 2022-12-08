@@ -29,6 +29,7 @@ class ChatonType extends AbstractType
             ->add('proprietaire_id', EntityType::class, [
                 'class'=>Proprietaire::class,
                 'choice_label'=>"prenom",
+                'label'=> "Propriétaire",
                 'multiple'=>true,
                 'expanded'=>true
             ])
