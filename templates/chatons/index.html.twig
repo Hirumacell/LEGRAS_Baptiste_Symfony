@@ -21,7 +21,7 @@
                         <img src="{{ c.photo }}" alt="" class="card-img-top">
                         <div class="card-body">
                             <h2 class="card-title">{{ c.nom }}</h2>
-                            <a href="{{ path('app_chaton_supprimer', {"id":c.id}) }}" class="mt-5 btn btn-warning">Modifier</a>
+                            <a href="{{ path('app_chatons_modifier', {"id":c.id}) }}" class="mt-5 btn btn-secondary">Modifier</a>
                             <a href="{{ path('app_chaton_supprimer', {"id":c.id}) }}" class="mt-5 btn btn-danger">Supprimer</a>
                         </div>
                     </div>

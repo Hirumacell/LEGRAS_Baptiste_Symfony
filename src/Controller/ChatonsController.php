@@ -38,6 +38,44 @@ class ChatonsController extends AbstractController
     }
 
     /**
+     * @Route("/chatons/modifier/{id}", name="app_chatons_modifier")
+     */
+    public function modifier($id, ManagerRegistry $doctrine, Request $request): Response
+    {
+        //créer le formulaire sur le même principe que dans ajouter
+        //mais avec une catégorie existante
+        $chaton = $doctrine->getRepository(Chaton::class)->find($id); // select * from catégoire where id = ...
+
+        //si l'id n'existe pas :
+        if (!$chaton) {
+            throw $this->createNotFoundException("Pas de chaton avec l'id $id");
+        }
+
+        //si l'id existe :
+        $form = $this->createForm(ChatonType::class, $chaton);
+
+        //On gère le retour du formulaire
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            //l'objet catégorie est rempli
+            //Donc on dit a doctrine de le save dans la Bdd (on utilise un entity manager)
+            $em = $doctrine->getManager();
+            //et on dit à l'entity manager de mettre la catégorie en question dans la table
+            $em->persist(($chaton));
+
+            //on génère l'appel SQL (ici un update)
+            $em->flush();
+
+            return $this->redirectToRoute("app_categories");
+        }
+
+        return $this->render("chatons/modifier.html.twig",[
+            "chaton"=>$chaton,
+            "formulaire"=>$form->createView()
+        ]);
+    }
+
+    /**
      * @Route("/chaton/ajouter", name="app_chaton_ajouter")
      */
     public function ajouter(ManagerRegistry $doctrine, Request $request): Response
