@@ -1,12 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Supprimer un propriétaire{% endblock %}
+{% block title %}Supprimer un chaton{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1>Supprimer le propriétaire <i>{{ proprietaire.nom }}</i></h1>
-        <p class="text-danger">ATTENTION </p>
-        <p>Supprimer un propriétaire ne supprime pas les chatons !</p>
+        <h1>Supprimer une chaton <i>{{ chaton.nom }}</i></h1>
         {{ form(formulaire) }}
         {# je vais mettre le bouton retour #}
         <a href="{{ path("app_categories") }}" class="btn btn-primary">Retour</a>
